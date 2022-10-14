@@ -1,8 +1,9 @@
 const { Controller } = require('@kohanajs/core-mvc');
 const { ControllerMixinView } = require('kohanajs');
+const { ControllerMixinMultipartForm, HelperForm } = require("@kohanajs/mod-form");
 
 class ControllerHome extends Controller {
-  static mixins = [ControllerMixinView];
+  static mixins = [ControllerMixinView, ControllerMixinMultipartForm];
 
   async action_index() {
     this.setTemplate('templates/home', { ipcountry: this.request.headers['cf-ipcountry'] || 'HK' });
@@ -17,6 +18,12 @@ class ControllerHome extends Controller {
     }
 
     this.body = slug;
+  }
+
+  async action_submit(){
+    const $_POST = this.state.get(ControllerMixinMultipartForm.POST_DATA);
+    const uploaded = await HelperForm.moveToUpload($_POST['photo'], '/media/upload');
+    console.log(uploaded);
   }
 }
 

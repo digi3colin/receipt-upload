@@ -17,6 +17,6 @@
     "purgecss" : "purgecss -c ./public_source/purgecss.config.js --output ./public/media/css-build"
   },
   "dependencies": {
-    "@kohanajs/pkg-fastify-liquidjs": "^1.0.1"
+    "@kohanajs/pkg-web-form": "^1.0.2"
   }
 }

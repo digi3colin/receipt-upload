@@ -1,0 +1,1 @@
+require("@kohanajs/mod-form");
