@@ -1,0 +1,114 @@
+@import "./variables";
+@import "../bootstrap-extend/variables";
+
+@keyframes force-repaint-clip {
+  from { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  to { clip-path: polygon(0 0, 100% 0, 100% 99.5%, 0 99.5%); }
+}
+
+.screen{
+  z-index: 1;
+  position: relative;
+  transition: min-height 1s ease, height 1s ease;
+
+  .screen-fixed-background{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    z-index:0;
+    overflow: hidden;
+
+    background: center center fixed;
+    background-size: cover;
+
+    + *{
+      position: relative;
+      z-index: 1
+    }
+  }
+
+  &.screen-clip{
+    animation-name: force-repaint-clip;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+}
+
+.screen-sticky{
+  position: sticky;
+  z-index: 1020;
+}
+
+.screen.sticky-top,
+.screen.sticky-bottom{
+  @extend .screen-sticky;
+}
+
+@each $name, $value in $grid-breakpoints {
+  .screen.sticky-#{$name}-top,
+  .screen.sticky-#{$name}-bottom{
+    @extend .screen-sticky;
+  }
+}
+
+.screen-full-svh{
+  min-height: var(--svh);
+}
+
+.screen-full-lvh{
+  min-height: 100vh;
+}
+
+.screen-full,
+.screen-full-dvh{
+  min-height: var(--vh);
+}
+
+.screen-full-half{
+  min-height: calc( var(--vh) * 0.5);
+}
+
+.screen-full-double{
+  transition: min-height 1s ease;
+  min-height: calc( var(--vh) * 2);
+}
+
+.screen-full-triple{
+  transition: min-height 1s ease;
+  min-height: calc( var(--vh) * 3);
+}
+
+.screen-full-minus-header{
+  min-height: calc( var(--vh) - var(--hh) );
+}
+
+.screen-safe-area{
+  padding-left: var(--screen-safe-area-left);
+  padding-right: var(--screen-safe-area-right);
+}
+
+// Responsive containers that are 100% wide until a breakpoint
+@each $breakpoint, $screen-safe-area-left in $screen-safe-area-lefts {
+  $screen-safe-area-right : map-get($screen-safe-area-rights, $breakpoint);
+
+  @include media-breakpoint-up($breakpoint){
+    :root{
+      --bs-container-margin-x: max(0px, calc((100vw - #{$screen-safe-area-left} - #{$screen-safe-area-right} - var(--bs-container-width) - var(--bs-gutter-x, 0.75rem) - var(--bs-gutter-x, 0.75rem)) * 0.5) );
+      --screen-safe-area-left: #{$screen-safe-area-left};
+      --screen-safe-area-right: #{$screen-safe-area-right};
+      --hh : #{map-get($header-heights, $breakpoint)}; //default header height
+      --nhh : #{map-get($header-heights, $breakpoint) * -1}; //default header height
+      --nfh : #{map-get($header-heights, $breakpoint) * -1.25}; //default header height
+      --fh : #{map-get($header-heights, $breakpoint) * 1.25}; //default header height
+    }
+  }
+
+  @include media-breakpoint-up($breakpoint) {
+    .screen-safe-area-#{$breakpoint}{
+      padding-left: var(--screen-safe-area-left);
+      padding-right: var(--screen-safe-area-right);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-bootstrap": "^2.3.1",
+    "react-dom": "^18.1.0",
+    "react-redux": "^8.0.1"
+  },
+  "scripts": {
+    "watch": "webpack --watch"
+  }
+}

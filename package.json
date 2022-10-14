@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest --coverage",
+    "babel": "npx babel public_source/media/js --out-dir public/media/js --source-maps --watch --verbose",
+    "sass": "npx sass public_source/media/css:public/media/css --source-map --watch",
+    "start": "npx concurrently \"npm run babel\" \"npm run sass\" \"node server/development\"",
+    "mjml1": "mjml --watch public_source/media/edm/en/rsvp.mjml -o public/media/edm/en/rsvp.html",
+    "mjml2": "mjml --watch public_source/media/edm/zh-hant/rsvp.mjml -o public/media/edm/zh-hant/rsvp.html",
+    "mjml3": "mjml --watch public_source/media/edm/zh-hans/rsvp.mjml -o public/media/edm/zh-hans/rsvp.html",
+    "mjml4": "mjml --watch public_source/media/edm/en/reminder.mjml -o public/media/edm/en/reminder.html",
+    "mjml5": "mjml --watch public_source/media/edm/zh-hant/reminder.mjml -o public/media/edm/zh-hant/reminder.html",
+    "mjml6": "mjml --watch public_source/media/edm/zh-hans/reminder.mjml -o public/media/edm/zh-hans/reminder.html",
+    "mjml": "npx concurrently \"npm run mjml1\" \"npm run mjml2\" \"npm run mjml3\" \"npm run mjml4\" \"npm run mjml5\" \"npm run mjml6\"",
+    "watch": "npx concurrently \"npm run babel\" \"npm run sass\"",
+    "purgecss" : "purgecss -c ./public_source/purgecss.config.js --output ./public/media/css-build"
+  },
+  "dependencies": {
+    "@kohanajs/pkg-fastify-liquidjs": "^1.0.1"
+  }
+}

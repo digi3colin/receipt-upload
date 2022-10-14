@@ -1,0 +1,102 @@
+/*!
+ * Bootstrap v5.2.0 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+// scss-docs-start import-stack
+// Configuration
+@import "variables";
+
+// Layout & components
+
+@import "../../../../../node_modules/bootstrap/scss/images";
+@import "../../../../../node_modules/bootstrap/scss/tables";
+@import "../../../../../node_modules/bootstrap/scss/forms";
+@import "../../../../../node_modules/bootstrap/scss/buttons";
+@import "../../../../../node_modules/bootstrap/scss/transitions";
+@import "../../../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../../../node_modules/bootstrap/scss/button-group";
+@import "../../../../../node_modules/bootstrap/scss/nav";
+@import "../../../../../node_modules/bootstrap/scss/navbar";
+@import "../../../../../node_modules/bootstrap/scss/card";
+@import "../../../../../node_modules/bootstrap/scss/accordion";
+@import "../../../../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../../../../node_modules/bootstrap/scss/pagination";
+@import "../../../../../node_modules/bootstrap/scss/badge";
+@import "../../../../../node_modules/bootstrap/scss/alert";
+@import "../../../../../node_modules/bootstrap/scss/progress";
+@import "../../../../../node_modules/bootstrap/scss/list-group";
+@import "../../../../../node_modules/bootstrap/scss/close";
+@import "../../../../../node_modules/bootstrap/scss/toasts";
+@import "../../../../../node_modules/bootstrap/scss/modal";
+@import "../../../../../node_modules/bootstrap/scss/tooltip";
+@import "../../../../../node_modules/bootstrap/scss/popover";
+@import "../../../../../node_modules/bootstrap/scss/carousel";
+@import "../../../../../node_modules/bootstrap/scss/spinners";
+@import "../../../../../node_modules/bootstrap/scss/offcanvas";
+@import "../../../../../node_modules/bootstrap/scss/placeholders";
+// scss-docs-end import-stack
+
+// Extends and additional utilities
+/** non bootstrap variables **/
+@import "./bootstrap-extend/variables";
+@import "./bootstrap-extend/fonts";
+@import "./bootstrap-extend/screens";
+@import "./bootstrap-extend/card";
+@import "./bootstrap-extend/grid";
+@import "./bootstrap-extend/container";
+@import "./bootstrap-extend/fade";
+@import "./bootstrap-extend/text";
+@import "./bootstrap-extend/blend-mode";
+
+.form-control::placeholder{
+  color: $gray-500;
+}
+
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6{
+  letter-spacing: -0.05em;
+}
+
+.display-1{
+  //  line-height: 0.83;
+}
+
+html[lang="zh-hant"] .display-1,
+html[lang="zh-hans"] .display-1{
+  line-height: 1;
+}
+
+.display-5,
+.display-6{
+  line-height: 1.2;
+}
+
+.btn{
+  border-radius: 2em;
+  padding: 0.15rem 1.2rem;
+}
+
+.btn-outline-primary{
+  color:#FFF;
+}
+
+
+.input-group-icon{
+  min-width: 3em;
+  justify-content: center;
+}
+
+.stick-top{
+  top:-1px;
+}
+
+.stick-bottom{
+  bottom:-1px;
+}

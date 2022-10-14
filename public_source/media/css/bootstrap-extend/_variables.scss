@@ -1,0 +1,39 @@
+$hh: 5.72rem;
+$safe-area-left : 6rem;
+$safe-area-right: 4rem;
+
+$rail-left-width : calc(147px + 3.5rem);
+$rail-right-width : calc(147px + 3.5rem);
+
+$header-heights: (
+        xs: 3.5rem,
+        sm: $hh,
+        md: $hh,
+        lg: $hh,
+        xl: $hh,
+        xxl: $hh,
+        xxxl: $hh,
+        xxxxl: $hh
+);
+
+$screen-safe-area-lefts: (
+        xs: 2rem,
+        sm: $safe-area-left,
+        md: $safe-area-left,
+        lg: $safe-area-left,
+        xl: $safe-area-left,
+        xxl: $safe-area-left,
+        xxxl: $safe-area-left,
+        xxxxl: $safe-area-left
+);
+
+$screen-safe-area-rights: (
+        xs: 2rem,
+        sm: 2rem,
+        md: 2rem,
+        lg: 2rem,
+        xl: $safe-area-right,
+        xxl: $safe-area-right,
+        xxxl: $safe-area-right,
+        xxxxl: $safe-area-right
+);

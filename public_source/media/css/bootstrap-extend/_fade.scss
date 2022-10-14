@@ -1,0 +1,127 @@
+@import "../variables";
+@import "./variables";
+
+
+/*
+.fade-top{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+  > div:first-child{
+    margin-top: var(--nfh);
+  }
+
+  > div:last-child{
+    margin-bottom: var(--nfh);
+  }
+}*/
+
+.fade-spacer-top:before,
+.fade-spacer-bottom:after,
+.fade-top:before,
+.fade-bottom:after{
+  content: "";
+  display: block;
+  position: sticky;
+  left:0;
+  right: 0;
+  height: var(--fh);
+  z-index: 1;
+}
+
+.fade-spacer-top:before,
+.fade-top:before{
+  top: -1px;
+//  top: calc(var(--fh) - 2px);
+//  transform: translate3d(0, var(--nfh), 0);
+}
+
+.fade-spacer-bottom:after,
+.fade-bottom:after{
+  bottom: -1px;
+//  bottom: calc(var(--fh) - 2px);
+//  transform: translate3d(0, var(--fh), 0);
+}
+
+.fade-spacer-top:before,
+.fade-spacer-bottom:after{
+  position: relative;
+}
+
+.fade-top:before{
+  background-image: linear-gradient(180deg, #FFF 0%, #FFF 80%, rgba(#FFF,0) 100%);
+}
+.fade-bottom:after{
+  background-image: linear-gradient(180deg, rgba(#FFF,0) 0%, #FFF 20%, #FFF 100%);
+}
+
+.fade-w100:before,
+.fade-w100:after{
+  width: 100%;
+}
+
+// Responsive containers that are 100% wide until a breakpoint
+@each $name, $value in $theme-colors {
+  .bg-#{$name} .fade-top:before,
+  .bg-#{$name}.fade-top:before,
+  .fade-top.fade-#{$name}:before{
+    background-image: linear-gradient(180deg, $value 0%, $value 80%, rgba($value,0) 100%);
+  }
+
+  .bg-#{$name} .fade-bottom:after,
+  .bg-#{$name}.fade-bottom:after,
+  .fade-bottom.fade-#{$name}:after{
+    background-image: linear-gradient(180deg, rgba($value,0) 0%, $value 20%, $value 100%);
+  }
+}
+
+// Responsive containers that are 100% wide until a breakpoint
+@each $breakpoint, $container-max-width in $container-max-widths {
+  @include media-breakpoint-up($breakpoint) {
+    .fade-spacer-#{$breakpoint}-top:before,
+    .fade-spacer-#{$breakpoint}-bottom:after,
+    .fade-#{$breakpoint}-top:before,
+    .fade-#{$breakpoint}-bottom:after{
+      content: "";
+      display: block;
+      position: sticky;
+      left:0;
+      right: 0;
+      height: calc(var(--hh) * 1.25);
+      z-index: 1;
+    }
+
+    .fade-spacer-#{$breakpoint}-top:before,
+    .fade-#{$breakpoint}-top:before{
+      top: -1px;
+    }
+
+    .fade-spacer-#{$breakpoint}-bottom:after,
+    .fade-#{$breakpoint}-bottom:after{
+      bottom: -1px;
+    }
+
+    .fade-spacer-#{$breakpoint}-top:before,
+    .fade-spacer-#{$breakpoint}-bottom:after{
+      background: none !important;
+      position: relative;
+    }
+
+    .fade-none-#{$breakpoint}-top:before,
+    .fade-none-#{$breakpoint}-bottom:after{
+      display: none;
+    }
+
+    // Responsive containers that are 100% wide until a breakpoint
+    @each $name, $value in $theme-colors {
+      .bg-#{$name}{
+        .fade-#{$breakpoint}-top:before{
+          background-image: linear-gradient(180deg, $value 0%, $value 80%, rgba($value,0) 100%);
+        }
+
+        .fade-#{$breakpoint}-bottom:after{
+          background-image: linear-gradient(180deg, rgba($value,0) 0%, $value 20%, $value 100%);
+        }
+      }
+    }
+  }
+}

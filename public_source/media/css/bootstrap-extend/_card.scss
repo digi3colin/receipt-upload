@@ -1,0 +1,13 @@
+@import "../variables";
+
+.card-round{
+  border-radius: 1rem;
+}
+
+@include media-breakpoint-down(sm){
+  .container.card{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: calc(100% - 2rem);
+  }
+}

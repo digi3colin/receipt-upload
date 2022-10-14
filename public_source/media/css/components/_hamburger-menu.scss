@@ -1,0 +1,91 @@
+@import "../variables";
+@import "../../../../../../node_modules/bootstrap/scss/mixins";
+
+$menu-width : 100vw;
+
+#nav-menu{
+  position: fixed;
+  z-index: 5000;
+  min-height: calc(100vh + 100px);
+
+  > div{
+    min-height: 100vh;
+  }
+}
+
+#nav-menu-close{
+  color: $white;
+  text-align: right;
+  right: 1em;
+  padding: 1em;
+  position: absolute;
+}
+
+#nav-menu-toggle{
+  cursor: pointer;
+
+  .hamburger:before, .hamburger:after, .hamburger .bar {
+    content: "";
+    display: block;
+    height: 2px;
+    background: $primary;
+    width: 1.3em;
+    transition: 0.5s;
+    margin: 6px 0;
+  }
+}
+
+.nav-menu-open {
+  overflow: hidden;
+  padding-right: 17px;
+
+  nav.sidebar {
+    width: $menu-width;
+  }
+
+  #nav-menu-toggle {
+    .hamburger .bar{
+      opacity: 0;
+    }
+
+    .hamburger:before{
+      transform: translate3d(0, 400%, 0) rotateZ(45deg)
+    }
+    .hamburger:after{
+      transform: translate3d(0, -400%, 0) rotateZ(-45deg)
+    }
+  }
+}
+
+#nav-menu{
+  .content-links{
+    margin-left:3rem;
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+
+    > a{
+      color :#FFF;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  #nav-menu-toggle .hamburger:before,
+  #nav-menu-toggle .hamburger:after,
+  #nav-menu-toggle .hamburger .bar{
+    margin: 3px 0;
+  }
+
+  .nav-menu-open{
+    #nav-menu-toggle .hamburger:before,
+    #nav-menu-toggle .hamburger:after,
+    #nav-menu-toggle .hamburger .bar{
+      margin: 6px 0;
+    }
+  }
+}

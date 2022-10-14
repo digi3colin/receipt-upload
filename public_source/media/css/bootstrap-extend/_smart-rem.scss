@@ -1,0 +1,22 @@
+@import "./variables";
+
+$rems: (
+        xs: calc(10px + 0.83vw), //14pt / 480px (mobile layout by 480px width)
+        sm: 14px,
+        md: 14px,
+        lg: 16px,
+        xl: 18px,
+        xxl: 20px,
+        xxxl: 22px,
+        xxxxl: 26px,
+);
+
+// Responsive containers that are 100% wide until a breakpoint
+@each $breakpoint, $rem in $rems {
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    :root{
+      font-size: $rem;
+      --rem : #{$rem};
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import "../variables";
+@import "../bootstrap-extend/variables";
+
+:root{
+  --padding-rail-left : max(var(--bs-gutter-x, 0.75rem), calc(#{$rail-left-width} + var(--bs-gutter-x, 0.75rem) - var(--bs-container-margin-x)));
+  --padding-rail-right : max(var(--bs-gutter-x, 0.75rem), calc(#{$rail-right-width} + var(--bs-gutter-x, 0.75rem) - var(--bs-container-margin-x)));
+}
+
+.rail-start,
+.rail-left{
+  padding-left : $rail-left-width;
+}
+
+.rail-end,
+.rail-right{
+  padding-right : $rail-right-width;
+}
+
+.container{
+  &.rail-start,
+  &.rail-left{
+    padding-left: var(--padding-rail-left);
+  }
+
+  &.rail-end,
+  &.rail-right{
+    padding-right: var(--padding-rail-right);
+  }
+}
+
+// Responsive containers that are 100% wide until a breakpoint
+@each $breakpoint, $container-max-width in $container-max-widths {
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    :root{
+      --bs-container-width: #{$container-max-width};
+    }
+
+    .rail-#{$breakpoint}-start,
+    .rail-#{$breakpoint}-left{
+      padding-left : $rail-left-width;
+    }
+
+    .rail-#{$breakpoint}-end,
+    .rail-#{$breakpoint}-right{
+      padding-right : $rail-right-width;
+    }
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl,
+    .container-xxl,
+    .container-xxxl,
+    .container-xxxxl{
+      &.rail-#{$breakpoint}-start,
+      &.rail-#{$breakpoint}-left{
+        padding-left: var(--padding-rail-left);
+      }
+
+      &.rail-#{$breakpoint}-end,
+      &.rail-#{$breakpoint}-right{
+        padding-right: var(--padding-rail-right);
+      }
+    }
+  }
+}

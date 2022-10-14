@@ -1,0 +1,10 @@
+@import "../variables";
+@import "./variables";
+
+.blend-mode-screen{
+  mix-blend-mode: screen;
+}
+
+.blend-mode-multiply{
+  mix-blend-mode: multiply;
+}

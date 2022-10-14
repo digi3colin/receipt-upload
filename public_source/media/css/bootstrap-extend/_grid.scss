@@ -1,0 +1,29 @@
+@import "../variables";
+
+.grid-column-4{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.grid-column-3{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-column-2{
+  grid-template-columns: 1fr 1fr;
+}
+
+@each $breakpoint, $grid-breakpoint in $grid-breakpoints {
+  @include media-breakpoint-up($breakpoint) {
+    .grid-column-#{$breakpoint}-4{
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .grid-column-#{$breakpoint}-3{
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .grid-column-#{$breakpoint}-2{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
