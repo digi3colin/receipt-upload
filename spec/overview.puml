@@ -1,0 +1,11 @@
+@startuml
+skinparam Shadowing false
+title Receipt Uploader
+start
+:camera capture photo;
+:upload image<
+:text extract;
+:matching text template;
+:extract receipt shop, amount, number;
+end
+@enduml
