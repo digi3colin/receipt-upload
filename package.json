@@ -17,6 +17,9 @@
     "purgecss" : "purgecss -c ./public_source/purgecss.config.js --output ./public/media/css-build"
   },
   "dependencies": {
-    "@kohanajs/pkg-web-form": "^1.0.2"
+    "@kohanajs/pkg-web-form": "^1.0.2",
+    "@aws-sdk/client-rekognition": "^3.188.0",
+    "@aws-sdk/client-textract": "^3.188.0",
+    "@aws-sdk/credential-provider-ini": "^3.188.0"
   }
 }

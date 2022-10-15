@@ -1,5 +1,13 @@
+<h3>Detect use rekognition</h3>
 <form action="/submit" method="post" enctype="multipart/form-data">
-    <label for="photo">Picture</label>
+    <label for="photo">Photo</label>
+    <input id="photo" name="photo" type="file" capture="user" accept="image/*"/>
+    <input type="submit">
+</form>
+
+<h3>Detect use textract</h3>
+<form action="/submit2" method="post" enctype="multipart/form-data">
+    <label for="photo">Photo</label>
     <input id="photo" name="photo" type="file" capture="user" accept="image/*"/>
     <input type="submit">
 </form>
