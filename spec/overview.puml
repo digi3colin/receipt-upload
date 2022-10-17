@@ -3,8 +3,13 @@ skinparam Shadowing false
 title Receipt Uploader
 start
 :camera capture photo;
-:upload image<
+:upload image
+select shop name
+receipt number
+total amount<
 :text extract;
+:matching shop name;
+:matching amount;
 :matching text template;
 :extract receipt shop, amount, number;
 end
